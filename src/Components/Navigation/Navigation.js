@@ -9,7 +9,7 @@ const Navigation = () => {
       <Link to="/profile" underlayColor="#f0f4f7" style={styles.navItem}>
         <Icon name="home" color="#517fa4" />
       </Link>
-      <Link to="/todolist" underlayColor="#f0f4f7" style={styles.navItem}>
+      <Link to="/dialogs" underlayColor="#f0f4f7" style={styles.navItem}>
         <Icon name="message-square" type="feather" color="#517fa4" />
       </Link>
       <Link to="/music" underlayColor="#f0f4f7" style={styles.navItem}>
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     padding: 10,
     flexDirection: "row",
     justifyContent: "space-around",
-    backgroundColor: "#E30A44",
+    backgroundColor: "#0E073C",
   },
   navItem: {
     flex: 1,

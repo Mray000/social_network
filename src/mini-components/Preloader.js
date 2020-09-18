@@ -7,7 +7,7 @@ const Preloader = () => {
       style={{
         textAlign: "center",
         justifyContent: "center",
-        backgroundColor: "black",
+        backgroundColor: "#0E073C",
         flex: 1,
       }}
     >

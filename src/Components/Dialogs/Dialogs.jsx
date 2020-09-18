@@ -1,9 +1,12 @@
 import React from "react";
-import { View, StyleSheet, ImageBackground } from "react-native";
-import Post from "./Profile-Post";
-import AddPost from "./Profile-AddPost";
-import { ScrollView } from "react-native-gesture-handler";
-import ProfileElementsContainer from "./Elements/Profile-ProfileElementsContainer";
+import People from "./Dialogs-People";
+import Message from "./Dialogs-Message";
+import AddMessage from "./Dialogs-AddMessage";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { withAuthRedirect } from "../../utils/AuthRedirect";
+import { ImageBackground, ScrollView, StyleSheet, View } from "react-native";
+import { withRouter } from "react-router-native";
 
 const image = {
   uri:
@@ -19,29 +22,39 @@ const image = {
     "https://mfiles.alphacoders.com/753/753320.jpg",
 };
 
-const Profile = () => {
+const Dialogs = (props) => {
+  let userId = !!props.userId;
   return (
     <ImageBackground source={image} style={styles.image}>
-      <ProfileElementsContainer />
-      <AddPost />
-      <ScrollView>
-        <Post />
-      </ScrollView>
+      <View style={styles.container}>
+        {/* <View>DIALOGS</View> */}
+        {!userId && <People />}
+        {userId && (
+          <View>
+            <ScrollView style={styles.messages}>
+              <Message />
+            </ScrollView>
+            <View>
+              <AddMessage />
+            </View>
+          </View>
+        )}
+      </View>
     </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
   image: {
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
+    alignItems: "center",
+  },
+  messages: {
+    width: 400,
+    // backgroundColor: "red",
   },
 });
 
-export default Profile;
+export default Dialogs;
