@@ -50,7 +50,6 @@ export const LoginAuth = (email, password, rememberMe, captcha) => async (
   dispatch
 ) => {
   let data = await AuthAPI.login(email, password, rememberMe, captcha);
-  console.log(data);
   switch (data.resultCode) {
     case 0:
       dispatch(GetMeData());

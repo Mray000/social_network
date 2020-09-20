@@ -22,7 +22,7 @@ const App = ({ Initialing, initialized, ...props }) => {
     Initialing();
   }, [Initialing]);
   if (!initialized) return <Preloader />;
-  console.log(console.log(props.match));
+  // console.log(console.log(props.match));
   return (
     <Fragment>
       <SafeAreaView style={{ flex: 0.001, backgroundColor: "#010101" }} />
@@ -32,8 +32,8 @@ const App = ({ Initialing, initialized, ...props }) => {
           <Route path="/dialogs/:userId?" component={DialogsContainer} />
           <Redirect from="/" to="/profile" />
         </Switch>
-        <Navigation />
       </SafeAreaView>
+      <Navigation />
     </Fragment>
   );
 };

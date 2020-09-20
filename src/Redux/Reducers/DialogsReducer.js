@@ -9,7 +9,9 @@ let InintialState = {
     { id: 5, name: "ILham" },
     { id: 6, name: "Arslan" },
     { id: 7, name: "Sasha" },
-    { id: 8, name: "Arslan" },
+    { id: 9, name: "JricA" },
+    { id: 10, name: "Trrr" },
+    { id: 11, name: "Gorlo" },
   ],
   message: [
     { id: 1, message: "Hi" },

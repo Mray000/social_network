@@ -1,11 +1,11 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
-// import { ActionsContainer, Button } from "react-native-clean-form";
 import { AddMessageFunction } from "./../../Redux/Reducers/DialogsReducer";
 import { required } from "../../utils/Validaters";
-import { View, Button, StyleSheet } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import MyTextInput from "../../mini-components/MyInput";
+import { Icon } from "react-native-elements";
 
 const AddMessageForm = (props) => {
   return (
@@ -17,45 +17,40 @@ const AddMessageForm = (props) => {
         validate={[required]}
         style={styles.input}
       />
-      {/* <ActionsContainer>
-        <Button
-          submitting={props.submitting}
-          onPress={props.handleSubmit(props.onSubmit)}
-          style={styles.button}
-          // color="purple"
-        >
-        {"==>"}
-        </Button>
-      </ActionsContainer> */}
-      <View style={styles.button}>
-        <Button
-          submitting={props.submitting}
-          onPress={props.handleSubmit(props.onSubmit)}
-          style={styles.button}
-          color="purple"
-          title="==>"
-        />
-      </View>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={props.handleSubmit(props.onSubmit)}
+      >
+        <Icon name="send" color="#7E17A5" />
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    width: 413,
     flexDirection: "row",
-    // justifyContent: "space-around",
-    backgroundColor: "red",
+    justifyContent: "space-around",
+    marginBottom: 8,
+    // backgroundColor: "red",
   },
   input: {
-    width: 300,
-    height: 60,
-    backgroundColor: "black",
-    borderRadius: 10,
+    width: 350,
+    backgroundColor: "#652E73",
+    borderRadius: 8,
     padding: 10,
+    color: "white",
+    // marginLeft: 10,
   },
   button: {
-    width: 100,
-    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    width: 35,
+    // backgroundColor: "#7E17A5",
+  },
+  text: {
+    color: "white",
   },
 });
 
@@ -65,12 +60,11 @@ const AddMessageReduxForm = reduxForm({
 
 const AddMessage = (props) => {
   const onSubmit = (formData) => {
-    props.AddMessageFunction(formData.message);
+    formData.message ? props.AddMessageFunction(formData.message) : null;
     formData.message = "";
   };
   return (
     <View>
-      {/* <Text>message</Text> */}
       <AddMessageReduxForm onSubmit={onSubmit} />
     </View>
   );

@@ -7,6 +7,7 @@ import { withRouter } from "react-router-native";
 import Dialogs from "./Dialogs";
 
 const DialogsContainer = (props) => {
+  // console.log(props.match);
   return <Dialogs userId={props.match.params.userId} />;
 };
 
