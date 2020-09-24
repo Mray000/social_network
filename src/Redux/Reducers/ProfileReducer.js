@@ -118,36 +118,36 @@ export const UpdateStatus = (status) => async (dispatch) => {
   }
 };
 
-// export const UpdatePhoto = (file) => async (dispatch) => {
-//   let data = await ProfileAPI.UpdatePhoto(file);
-//   if (data.resultCode === 0) {
-//     dispatch(SetPhoto(data.data.photos));
-//   }
-// };
+export const UpdatePhoto = (file) => async (dispatch) => {
+  let data = await ProfileAPI.UpdatePhoto(file);
+  if (data.resultCode === 0) {
+    dispatch(SetPhoto(data.data.photos));
+  }
+};
 
-// export const UpdateProfile = (profile) => async (dispatch) => {
-//   let data = await ProfileAPI.UpdateProfile(profile);
-//   if (data.resultCode === 0) {
-//     await dispatch(Redirect(true));
-//     dispatch(Redirect(false));
-//   }
-//   if (data.resultCode === 1) {
-//     let preErrorLink = data.messages[0].slice(30, -1);
-//     let errorLink = preErrorLink[0].toLowerCase() + preErrorLink.slice(1);
-//     dispatch(
-//       stopSubmit("profile_edit", {
-//         [errorLink]: `error  ${errorLink} link`,
-//       })
-//     );
-//   }
-// };
+export const UpdateProfile = (profile) => async (dispatch) => {
+  let data = await ProfileAPI.UpdateProfile(profile);
+  if (data.resultCode === 0) {
+    await dispatch(Redirect(true));
+    dispatch(Redirect(false));
+  }
+  if (data.resultCode === 1) {
+    let preErrorLink = data.messages[0].slice(30, -1);
+    let errorLink = preErrorLink[0].toLowerCase() + preErrorLink.slice(1);
+    dispatch(
+      stopSubmit("profile_edit", {
+        [errorLink]: `error  ${errorLink} link`,
+      })
+    );
+  }
+};
 
-// export const GetStatus = (id) => {
-//   return (dispatch) => {
-//     ProfileAPI.getStatus(id).then((data) => {
-//       dispatch(SetStatus(data));
-//     });
-//   };
-// };
+export const GetStatus = (id) => {
+  return (dispatch) => {
+    ProfileAPI.getStatus(id).then((data) => {
+      dispatch(SetStatus(data));
+    });
+  };
+};
 
 export default ProfileReducer;
