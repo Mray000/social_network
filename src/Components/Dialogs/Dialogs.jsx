@@ -10,31 +10,26 @@ import { withRouter } from "react-router-native";
 import DialogsHeader from "./Dialogs-Header";
 
 const image = {
-  uri: "https://mfiles.alphacoders.com/753/753320.jpg",
-
-  // "https://i.pinimg.com/736x/0c/2a/c8/0c2ac8aa158ddad9fa3d7e9e3dae7eed.jpg",
+  uri:
+    "https://i.pinimg.com/originals/0e/3e/68/0e3e683a50835eee5c54c48f6c590775.jpg",
 };
 
 const Dialogs = (props) => {
-  // let userId = !!props.userId;
   return (
-    <ImageBackground source={image} style={styles.image}>
-      <View style={styles.container}>
-        {/* <View>DIALOGS</View> */}
-        {!props.userId && <People />}
-        {props.userId && (
+    <View style={styles.container}>
+      {!props.userId && <People />}
+      {props.userId && (
+        <View>
+          <DialogsHeader userId={props.userId} />
+          <ScrollView style={styles.messages}>
+            <Message />
+          </ScrollView>
           <View>
-            <DialogsHeader userId={props.userId} />
-            <ScrollView style={styles.messages}>
-              <Message />
-            </ScrollView>
-            <View>
-              <AddMessage />
-            </View>
+            <AddMessage />
           </View>
-        )}
-      </View>
-    </ImageBackground>
+        </View>
+      )}
+    </View>
   );
 };
 

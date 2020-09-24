@@ -8,6 +8,7 @@ import { Icon } from "react-native-elements";
 // };
 
 const Job = (job) => {
+  console.log(job);
   return (
     <View style={styles.container}>
       {job.lookingForAJob ? (
@@ -40,13 +41,13 @@ const Job = (job) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    marginTop: 27,
+    // marginTop: 27,
   },
   text: {
     // color: "green",
     fontWeight: "bold",
     fontSize: 17,
-    color: "white",
+    color: "red",
   },
 });
 

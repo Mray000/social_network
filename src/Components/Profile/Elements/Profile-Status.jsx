@@ -1,54 +1,55 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { StyleSheet, Text, TouchableNativeFeedback, View } from "react-native";
-// import { Button } from "react-native-clean-form";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Modal from "react-native-modal";
+import { startSubmit } from "redux-form";
 import { StatusReduxForm } from "./Profile-StatusForm";
 
 const Status = (props) => {
-  let [editMode, SetEditMode] = useState(false);
-  let [status, SetStatus] = useState(props.aboutMe);
-  const ActivateEditMode = () => {
-    SetEditMode(true);
-  };
-  const DeactivateEditMode = () => {
-    SetEditMode(false);
+  const [isModalVisible, SetModalVisible] = useState(false);
+  const [status, SetStatus] = useState(props.aboutMe);
+  const toggleModal = () => {
+    SetModalVisible(!isModalVisible);
   };
   useEffect(() => {
     SetStatus(props.aboutMe);
   }, [props.aboutMe]);
 
   const onSubmit = (formData) => {
-    DeactivateEditMode();
+    SetModalVisible(!isModalVisible);
     SetStatus(formData.status);
     props.UpdateStatus(formData.status);
   };
 
+  let statusr;
+
+  if (status.length > 10) {
+    statusr = `${status.substr(0, 10)}...`;
+  } else statusr = status;
+
   return (
     <View style={styles.container}>
-      {!editMode && (
-        <TouchableNativeFeedback
-          onPress={ActivateEditMode}
-          // background={
-          //   Platform.OS === "android"
-          //     ? TouchableNativeFeedback.SelectableBackground()
-          //     : ""
-          // }
-        >
-          <View style={styles.status_container}>
-            <Text style={styles.text}>
-              {status}
-              {/* {Platform.OS !== "android" ? "(Android only)" : ""} */}
-            </Text>
+      <TouchableOpacity onPress={toggleModal} style={styles.status_container}>
+        <Text style={styles.text}>{statusr}</Text>
+      </TouchableOpacity>
+      <Modal
+        isVisible={isModalVisible}
+        style={styles.modal}
+        onSwipeComplete={() => toggleModal(!isModalVisible)}
+        swipeDirection="down"
+      >
+        <View style={styles.container2}>
+          <View style={styles.interesting}>
+            <Text style={styles.text_interesting}>What about you?</Text>
           </View>
-        </TouchableNativeFeedback>
-      )}
-      {editMode && (
-        <StatusReduxForm
-          onSubmit={onSubmit}
-          status={status}
-          initialValues={{ status: status }}
-        />
-      )}
+          <StatusReduxForm
+            onSubmit={onSubmit}
+            status={status}
+            close={() => toggleModal(!isModalVisible)}
+            initialValues={{ status: status }}
+          />
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -57,16 +58,48 @@ const styles = StyleSheet.create({
   container: {
     width: 110,
     height: 30,
-    marginTop: 10,
+    // marginTop: 10,
   },
 
   status_container: {
-    alignItems: "center",
+    marginTop: 2,
+    marginLeft: 2,
+    width: 130,
   },
   text: {
+    color: "#C4DDF4",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  container2: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#0E083D",
+    // backgroundColor: "white",
+    width: 270,
+    borderRadius: 10,
+    marginBottom: 200,
+    height: 200,
+  },
+  interesting: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#4169E1",
+    width: 200,
+    height: 40,
+    borderRadius: 6,
+    marginBottom: 20,
+  },
+  text_interesting: {
     color: "white",
     fontSize: 16,
     fontWeight: "bold",
+  },
+  modal: {
+    flex: 1,
+    margin: 0,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

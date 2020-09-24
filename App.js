@@ -16,27 +16,45 @@ import Navigation from "./src/Components/Navigation/Navigation";
 import { SafeAreaView } from "react-native-safe-area-context";
 import DialogsContainer from "./src/Components/Dialogs/DialogsContainer";
 import { compose } from "redux";
+import { ImageBackground, StyleSheet, View } from "react-native";
+
+const image = {
+  uri:
+    "https://i.pinimg.com/originals/0e/3e/68/0e3e683a50835eee5c54c48f6c590775.jpg",
+};
 
 const App = ({ Initialing, initialized, ...props }) => {
   useEffect(() => {
     Initialing();
   }, [Initialing]);
   if (!initialized) return <Preloader />;
-  // console.log(console.log(props.match));
+
   return (
     <Fragment>
-      <SafeAreaView style={{ flex: 0.001, backgroundColor: "#010101" }} />
+      <SafeAreaView style={{ flex: 0.003, backgroundColor: "#0E083D" }} />
       <SafeAreaView style={{ flex: 1 }}>
-        <Switch>
-          <Route path="/profile/:userId?" component={ProfileContainer} />
-          <Route path="/dialogs/:userId?" component={DialogsContainer} />
-          <Redirect from="/" to="/profile" />
-        </Switch>
+        <ImageBackground source={image} style={styles.image}>
+          <Switch>
+            <Route path="/profile/:userId?" component={ProfileContainer} />
+            <Route path="/dialogs/:userId?" component={DialogsContainer} />
+            <Redirect from="/" to="/profile" />
+          </Switch>
+        </ImageBackground>
       </SafeAreaView>
       <Navigation />
     </Fragment>
   );
 };
+
+const styles = StyleSheet.create({
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
+    alignItems: "center",
+    // position: "absolute",
+  },
+});
 
 const mapStateToProps = (state) => ({
   initialized: state.App.initialized,

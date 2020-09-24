@@ -15,10 +15,12 @@ const LinkCreator = ({ link, name = link, type = "feather", location }) => {
       underlayColor="rgba(222,12,191, 0.1)"
       style={styles.navItem}
     >
-      <Icon name={name} type={type} color={thispath ? "#3188D9" : "white"} />
+      <Icon name={name} type={type} color={thispath ? "#F76FF0" : "white"} />
     </Link>
   );
 };
+
+
 
 const styles = StyleSheet.create({
   navItem: {

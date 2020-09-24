@@ -1,3 +1,4 @@
+import { Link } from "@react-navigation/native";
 import React from "react";
 // import ava from "./../../../images/ava.png";
 import { Image, StyleSheet, View } from "react-native";
@@ -36,20 +37,37 @@ const Photo = ({ photo }) => {
     uri: photo,
   };
   return (
-    <View>
+    <View style={styles.container}>
       <Image
         source={photo ? image : require("../../../images/ava.png")}
         style={styles.img}
       />
+      <Link to="/edit" style={styles.text}>
+        Edit profile
+      </Link>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#0E083D",
+    width: 160,
+    borderRadius: 10,
+    height: 170,
+    // padding: 10,
+  },
   img: {
     borderRadius: 10,
-    width: 150,
-    height: 150,
+    width: 130,
+    height: 130,
+  },
+  text: {
+    color: "#C4DDF4",
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });
 

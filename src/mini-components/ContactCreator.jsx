@@ -27,7 +27,7 @@ const Contact = (link, text_img) => {
     <>
       {link && (
         <View style={styles.container}>
-          <Icon name={text_img} color={color[text_img]} />
+          <Icon name={text_img} color={color[text_img]} size={30} />
           <Text
             style={styles.text}
             onPress={() => Linking.openURL(`http://${link}`)}
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   text: {
     color: "gold",
     fontWeight: "bold",
-    fontSize: 13,
+    fontSize: 20,
     marginLeft: 3,
   },
 });

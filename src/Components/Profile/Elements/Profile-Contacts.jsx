@@ -14,7 +14,7 @@ const Contacts = (contacts) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: -2,
+    // marginTop: -2,
   },
 });
 
