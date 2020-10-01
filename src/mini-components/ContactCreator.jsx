@@ -26,7 +26,7 @@ const Contact = (link, text_img) => {
   return (
     <>
       {link && (
-        <View style={styles.container}>
+        <View style={styles.container} key={link}>
           <Icon name={text_img} color={color[text_img]} size={30} />
           <Text
             style={styles.text}

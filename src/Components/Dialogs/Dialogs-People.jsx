@@ -9,6 +9,7 @@ import {
   View,
 } from "react-native";
 import { Redirect } from "react-router-native";
+import { SetNavigation } from "../../Redux/Reducers/AppReducer";
 // import { LinearGradient } from "expo";
 const People = (props) => {
   const [redirect, SetRedirect] = useState([false, 0]);
@@ -18,25 +19,45 @@ const People = (props) => {
   }
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      // alwaysBounceHorizontal={""}
+      // bounces={""}
+      contentIns
+      etAdjustmentBehavior={"white"}
+      borderTopColor="black"
+      endFillColor={"black"}
+      // fadingEdgeLength={""}
+      decelerationRate={"normal"}
+      horizontal={false}
+    >
       {props.people.map((humon) => {
         return (
-          <TouchableOpacity
-            key={humon.id}
-            style={styles.person_container}
-            onPress={() => {
-              SetRedirect([true, humon.id]);
-            }}
-          >
-            <Image
-              source={require("./../../images/ava.png")}
-              style={styles.img}
+          <View style={{ alignItems: "center" }} key={humon.id}>
+            <TouchableOpacity
+              style={styles.person_container}
+              onPress={() => {
+                SetRedirect([true, humon.id]);
+                props.SetNavigation(false);
+              }}
+            >
+              <Image
+                source={require("./../../images/ava.png")}
+                style={styles.img}
+              />
+              <View style={styles.container2}>
+                <Text style={styles.text}>{humon.name}</Text>
+                <Text style={styles.text}>Last message</Text>
+              </View>
+            </TouchableOpacity>
+            <View
+              style={{
+                borderWidth: 1,
+                width: 395,
+                borderColor: "#4E97B7",
+              }}
             />
-            <View>
-              <Text style={styles.text}>{humon.name}</Text>
-              <Text style={styles.text}>Last message</Text>
-            </View>
-          </TouchableOpacity>
+          </View>
         );
       })}
     </ScrollView>
@@ -55,9 +76,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: 410,
     height: 65,
-    marginTop: 10,
-    backgroundColor: "rgba(0,0,61, 0.9)",
-    borderRadius: 10,
+    // marginBottom: 10,
+    // backgroundColor: "#7D387A",
+    // borderRadius: 10,
+  },
+  container2: {
+    // backgroundColor: "red",
+    height: 55,
+    justifyContent: "space-around",
   },
   linearGradient: {
     flex: 1,
@@ -70,10 +96,11 @@ const styles = StyleSheet.create({
     // fontWeight: "bold",
     // marginBottom: 22,
     // fontSize: 18,
+    // marginTop: 20,
   },
   img: {
-    width: 60,
-    height: 60,
+    width: 55,
+    height: 55,
   },
 });
 
@@ -83,4 +110,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(People);
+export default connect(mapStateToProps, { SetNavigation })(People);

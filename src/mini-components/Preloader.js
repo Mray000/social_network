@@ -1,25 +1,39 @@
 import React from "react";
 import { View, Text, Image, ImageBackground, StyleSheet } from "react-native";
+import { connect } from "react-redux";
+import { SetNavigation } from "../Redux/Reducers/AppReducer";
 
-const Preloader = () => {
-  return (
-    <ImageBackground
-      source={{
-        uri:
-          "https://i.pinimg.com/originals/0e/3e/68/0e3e683a50835eee5c54c48f6c590775.jpg",
-      }}
-      style={styles.imageBack}
-    >
-      <Image source={require("../images/preloader.gif")} style={styles.image} />
-    </ImageBackground>
-  );
-};
+// const Preloader = ({ SetNavigation }) => {
+//   return (
+//     <View style={styles.container}>
+//       <Image source={require("../images/preloader.gif")} style={styles.image} />
+//     </View>
+//   );
+// };
+class Preloader extends React.Component {
+  componentDidMount() {
+    this.props.SetNavigation(false);
+  }
+  componentWillUnmount() {
+    this.props.SetNavigation(true);
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+        <Image
+          source={require("../images/preloader.gif")}
+          style={styles.image}
+        />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
-  imageBack: {
+  container: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#0E073C",
+    backgroundColor: "#193248",
     flex: 1,
   },
   image: {
@@ -29,4 +43,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Preloader;
+export default connect(Object, { SetNavigation })(Preloader);

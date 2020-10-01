@@ -20,8 +20,8 @@ const ProfileElements = (props) => {
       </View>
       <View style={styles.name_status_more}>
         <View style={styles.name_status}>
-          <View style={styles.name}>
-            <Text style={styles.text}>{props.profile.fullName}</Text>
+          <View>
+            <Text style={styles.name}>{props.profile.fullName}</Text>
           </View>
           <Status
             UpdateStatus={props.UpdateStatus}
@@ -37,6 +37,7 @@ const ProfileElements = (props) => {
             lookingForAJob={props.profile.lookingForAJob}
             lookingForAJobDescription={props.profile.lookingForAJobDescription}
             contacts={props.profile.contacts}
+            status={props.profile.aboutMe}
           />
         </View>
       </View>
@@ -52,16 +53,15 @@ const styles = StyleSheet.create({
     marginRight: 15,
     width: 400,
     justifyContent: "space-around",
-    // color: "white",
   },
   name_status_more: {
-    // justifyContent: "space-around",
-    // textAlign: "justify",
     marginLeft: 8,
-    color: "white",
+    // justifyContent: "space-around",
+    // color: "white",
+    height: 170,
   },
   name_status: {
-    backgroundColor: "#0E083D",
+    backgroundColor: "#D04B38",
     width: 225,
     paddingLeft: 8,
     borderRadius: 10,
@@ -72,13 +72,10 @@ const styles = StyleSheet.create({
   photo: {
     // marginLeft: 10,
   },
-  text: {
-    color: "white",
-    fontSize: 20,
-    fontWeight: "900",
-  },
   name: {
     fontSize: 20,
+    fontWeight: "bold",
+    color: "white",
   },
 });
 

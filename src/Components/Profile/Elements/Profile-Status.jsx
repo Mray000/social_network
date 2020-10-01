@@ -67,14 +67,14 @@ const styles = StyleSheet.create({
     width: 130,
   },
   text: {
-    color: "#C4DDF4",
+    color: "white",
     fontSize: 16,
     fontWeight: "bold",
   },
   container2: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#0E083D",
+    backgroundColor: "#193248",
     // backgroundColor: "white",
     width: 270,
     borderRadius: 10,

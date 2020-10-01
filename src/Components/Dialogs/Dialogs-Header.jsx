@@ -4,8 +4,9 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 // import { Icon } from "react-native-elements";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-native";
+import { SetNavigation } from "../../Redux/Reducers/AppReducer";
 
-const DialogsHeader = ({ people, userId }) => {
+const DialogsHeader = ({ people, userId, SetNavigation }) => {
   const [redirect, SetRedirect] = useState(false);
   let humon = people.filter((p) => p.id == userId);
   let name;
@@ -17,7 +18,13 @@ const DialogsHeader = ({ people, userId }) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => SetRedirect(true)} style={styles.button}>
+      <TouchableOpacity
+        onPress={() => {
+          SetRedirect(true);
+          SetNavigation(true);
+        }}
+        style={styles.button}
+      >
         <Icon name="keyboard-backspace" size={34} color="#7E17A5" />
       </TouchableOpacity>
       <View style={styles.person_container}>
@@ -31,8 +38,12 @@ const DialogsHeader = ({ people, userId }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    backgroundColor: "#000015",
+    // backgroundColor: "#000015",
     height: 52,
+    borderColor: "#4E97B7",
+    borderStyle: "solid",
+    borderTopWidth: 2,
+    borderBottomWidth: 2,
   },
   text: {
     color: "white",
@@ -64,4 +75,4 @@ const mapStateToProps = (state) => ({
   people: state.Dialogs.people,
 });
 
-export default connect(mapStateToProps)(DialogsHeader);
+export default connect(mapStateToProps, { SetNavigation })(DialogsHeader);

@@ -11,7 +11,10 @@ let InintialState = {
     { id: 7, name: "Sasha" },
     { id: 9, name: "JricA" },
     { id: 10, name: "Trrr" },
-    { id: 11, name: "Gorlo" },
+    { id: 12, name: "FunArt" },
+    { id: 13, name: "GGBET" },
+    { id: 14, name: "Spula" },
+    { id: 15, name: "Eeee" },
   ],
   message: [
     { id: 1, message: "Hi" },

@@ -12,6 +12,7 @@ const AddMessageForm = (props) => {
     <View onSubmit={props.handleSubmit} style={styles.container}>
       <Field
         placeholder={"New message"}
+        placeholderTextColor="white"
         name={"message"}
         component={MyTextInput}
         validate={[required]}
@@ -21,7 +22,7 @@ const AddMessageForm = (props) => {
         style={styles.button}
         onPress={props.handleSubmit(props.onSubmit)}
       >
-        <Icon name="send" color="#7E17A5" />
+        <Icon name="send" color="#4E97B7" />
       </TouchableOpacity>
     </View>
   );
@@ -29,19 +30,27 @@ const AddMessageForm = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 413,
+    width: "100%",
     flexDirection: "row",
     justifyContent: "space-around",
-    marginBottom: 8,
-    // backgroundColor: "red",
+    // marginBottom: 8,
+    backgroundColor: "#0D2C48",
   },
   input: {
-    width: 350,
-    backgroundColor: "#652E73",
-    borderRadius: 8,
-    padding: 10,
+    width: 378,
+    // backgroundColor: "#0D2C48",
+    borderRadius: 4,
+    height: 50,
     color: "white",
+    // borderColor: "#4E97B7",
+    // borderStyle: "solid",
+    // borderTopWidth: 2,
+    // borderRightWidth: 2,
+    // borderBottomWidth: 2,
+    paddingLeft: 7,
+    fontSize: 16,
     // marginLeft: 10,
+    // borderBottomLeftRadius: 20,
   },
   button: {
     alignItems: "center",

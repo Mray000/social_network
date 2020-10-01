@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import Icon from "react-native-vector-icons/Entypo";
+import Icon from "react-native-vector-icons/AntDesign";
 import Modal from "react-native-modal";
 import Job from "./Profile-Job";
 import Contacts from "./Profile-Contacts";
@@ -22,6 +22,10 @@ const ModalMore = (props) => {
         swipeDirection="down"
       >
         <View style={styles.constainer2}>
+          <View style={styles.statusContainer}>
+            <Icon name="message1" size={24} />
+            <Text style={styles.status}>{props.status}</Text>
+          </View>
           <View>
             <Text>Job</Text>
             <Job
@@ -33,13 +37,6 @@ const ModalMore = (props) => {
             <Text>Contacts</Text>
             <Contacts {...props.contacts} />
           </View>
-          {/* <TouchableOpacity
-            title="+"
-            onPress={toggleModal}
-            style={styles.close}
-          >
-            <Icon name="cross" size={36} color="purple" />
-          </TouchableOpacity> */}
         </View>
       </Modal>
     </View>
@@ -48,14 +45,11 @@ const ModalMore = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center",
-    alignItems: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
   },
   constainer2: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#0E083D",
+    backgroundColor: "white",
     width: 410,
     borderRadius: 10,
     marginTop: 500,
@@ -69,16 +63,27 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 18,
     fontWeight: "bold",
-    textTransform: "uppercase",
+    // textTransform: "uppercase",
   },
   moreContainer: {
-    backgroundColor: "#0E083D",
+    backgroundColor: "#D04B38",
     borderRadius: 6,
     width: 225,
     height: 40,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 17,
+    marginTop: 15,
+  },
+  statusContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: 400,
+    marginLeft: 20,
+    marginTop: 20,
+  },
+  status: {
+    fontSize: 20,
+    fontWeight: "bold",
   },
   close: {
     marginLeft: 362,

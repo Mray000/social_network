@@ -13,10 +13,10 @@ const Country = ({ country = "Russia", town = "Kazan" }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#0E083D",
+    backgroundColor: "#D04B38",
     marginTop: 10,
     borderRadius: 10,
-    height: 40,
+    height: 45,
     justifyContent: "center",
     padding: 10,
   },
