@@ -1,2 +1,2 @@
-# trening
+# SocailNetwork
 first react app
